@@ -1,10 +1,13 @@
 .email{
     width: 100%;
-    display: flex;
+    position: sticky;
+    top: 0%;
+    display: grid;
     background-color: rgb(237, 235, 235);
-    font-size: 8% Assisstant;
+    font-size: 13px;
     font-family: sans-serif;
     color: #121212;
+    text-indent: 3%;
 }
 body{
     margin: 0px;
@@ -15,6 +18,14 @@ body{
     margin-left: 45%;
     margin-top: 10px;
     margin-bottom: 10px;
+    position: sticky;
+    top: 0%;
+    background-color: white;
+}
+.logo{
+    background-color: white;
+    position: sticky;
+    top: 2%;
 }
 .menu{
     display: flex;
@@ -24,6 +35,9 @@ body{
     margin-right: 0px;
     margin-top: 2px;
     margin-bottom: 0px;
+    position: sticky;
+    top: 45px;
+    background-color: white;
 }
 .menu li{
     display: inline;
@@ -44,6 +58,34 @@ body{
     display: flex;
     align-items: center;
 }
+.dropdown1 , .dropdown2 , .dropdown3 , .dropdown4 , .dropdown5 , .dropdown6 , .dropdown7 , .dropdown8{
+    position: relative;
+    display: inline-block;
+}
+.dropdown1-content , .dropdown2-content , .dropdown3-content , .dropdown4-content , .dropdown5-content , .dropdown6-content , .dropdown7-content , .dropdown8-content{
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 120px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 3px;
+    z-index: 1;
+}
+.dropdown1-content li , .dropdown2-content li, .dropdown3-content li , .dropdown4-content li, .dropdown5-content li , .dropdown6-content li, .dropdown7-content li , .dropdown8-content li{
+    padding: 5px;
+}
+.dropdown1-content li a , .dropdown2-content li a, .dropdown3-content li a , .dropdown4-content li a, .dropdown5-content li a , .dropdown6-content li a, .dropdown7-content li a , .dropdown8-content li a{
+    color: black;
+    padding: 1px;
+    font-size: 13px;
+    margin-left: 5px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown1:hover .dropdown1-content , .dropdown2:hover .dropdown2-content, .dropdown3:hover .dropdown3-content , .dropdown4:hover .dropdown4-content, .dropdown5:hover .dropdown5-content , .dropdown6:hover .dropdown6-content, .dropdown7:hover .dropdown7-content , .dropdown8:hover .dropdown8-content{
+    display: block;
+}
 #search{
     display: flex;
     align-items: center;
@@ -56,12 +98,16 @@ body{
     background-color: black;
     color: white;
 }
-#delivery{
+.delivery{
     display: flex;
     margin-left: 38%;
     color: rgb(0, 0, 0);
     font-size: 13px;
     font-family: Arial, Helvetica, sans-serif ;
+}
+.delivery p{
+    animation: slideIn 2s forwards;
+    animation-delay: 0s,2s;
 }
 #front{
     display: flex;
@@ -78,6 +124,11 @@ body{
     padding: 5px;
     width: 30%;
 }
+.imgs{
+    position: relative;
+    overflow: hidden;
+    
+}
 .imgs ul {
     list-style-type: none; /* Remove bullet points */
     padding: 0; /* Remove default padding */
@@ -87,16 +138,26 @@ body{
 
 .imgs li {
     display: inline; /* Ensure list items are inline */
+    overflow: hidden;
 }
 
 .imgs img {
     width: 100%; /* Responsive images */
     height: auto; /* Maintain aspect ratio */
+    object-fit: cover;
+    overflow: hidden;
 }
-#first,#second,#third{
+#first,#second,#third,#fourth,#fifth,#sixth{
     padding: 5px;
     width: 90%;
     gap: 15px;
+    display: block;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+#first:hover,#second:hover,#third:hover,#fourth:hover,#fifth:hover,#sixth:hover{
+    transform: scale(1.2); 
+    overflow: hidden;
 }
 #second{
     width: 88%;
@@ -107,6 +168,7 @@ body{
     padding: 0; /* Remove default padding */
     display: flex; /* Use flexbox for horizontal layout */
     margin-left: -3px;
+    overflow: hidden;
 }
 
 .imgs1 li {
@@ -162,6 +224,10 @@ body{
     padding: 5px;
     width: 49%;
     display: inline;
+    opacity: 1;
+}
+#e1:hover,#e2:hover{
+    opacity: 0.5;
 }
 #e3{
     width: 25%;
