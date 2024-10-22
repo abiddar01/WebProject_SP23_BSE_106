@@ -1,0 +1,76 @@
+body {
+    font-family: sans-serif;
+    color: white;
+    margin: 0;
+    padding: 0;
+    background-image: url('/background.jpg');
+    background-position: center;
+    background-size: cover;
+}
+
+.checkout-container {
+   
+    width: 490px;
+    margin: 120px auto;
+    border-radius: 8px;
+    padding: 30px;
+    box-sizing: border-box;
+    backdrop-filter: blur(8px);
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+input[type="text"], input[type="email"] {
+    position: relative;
+    width: 100%;
+    margin: 15px 0;
+    color: #fff;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    border-bottom: 2px solid #ccc;
+}
+
+input[type="text"]::after, input[type="email"]::after, input[type="text"]::before, input[type="email"]::before{
+    background: transparent;
+}
+
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #ce5959;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: 1s ease;
+    border-left: 2px solid #ccc;
+    border-right: 2px solid #ccc;
+    border-top: 2px solid #ccc;
+    border-bottom: 2px solid #ccc; 
+}
+
+button:hover {
+    transition: 1s ease;
+    background: transparent;
+    border-left: 2px solid black;
+    border-right: 2px solid black;
+    border-top: 2px solid black;
+    border-bottom: 2px solid black; 
+    color: white;
+}
+
+#confirmation {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.hidden {
+    display: none;
+}
+#img{
+    width: 100%;
+}
