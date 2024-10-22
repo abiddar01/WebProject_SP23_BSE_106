@@ -1,0 +1,87 @@
+body {
+    background-color: #f4f4f9;
+    font-family: 'Arial', sans-serif;
+}
+
+.container {
+    max-width: 800px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    background-image: url("/background1.jpg");
+}
+
+h1 {
+    color: #ff6347;
+    text-align: center;
+    font-size: 2.5rem;
+}
+
+.add-story-section {
+    background-color: rgba(70, 130, 180, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.add-story-section input, 
+.add-story-section textarea {
+    border: 1px solid #aaa;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.story-item {
+    background-color: rgba(240, 255, 255, 0.9);
+    border: 1px solid #ced4da;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.story-item h4 {
+    color: #6a5acd;
+}
+
+.story-item p {
+    color: #555;
+}
+
+.edit-title, .edit-content {
+    background-color: rgba(255, 248, 220, 0.8);
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.btn-edit, .btn-save-changes, .btn-remove {
+    position: absolute;
+    top: 10px;
+}
+
+.btn-edit {
+    right: 80px;
+}
+
+.btn-save-changes {
+    right: 150px;
+}
+
+.btn-remove {
+    right: 10px;
+}
