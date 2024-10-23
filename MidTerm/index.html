@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>My Portfolio</title>
+</head>
+<body>
+    <h1>My Portfolio</h1>
+    
+    <div class="semester" id="semester1">
+        <h2>Semester 1 Projects</h2>
+        <div class="project" onclick="showDescription('semester1/project1.txt')">
+            <h3>Project 1</h3>
+            <p>Summary of Project 1</p>
+            <button >View Description</button>
+        </div>
+        <div class="project" onclick="showDescription('semester1/project2.txt')">
+            <h3>Project 2</h3>
+            <p>Summary of Project 2</p>
+            <button >View Description</button>
+        </div>
+    </div>
+
+    <div class="semester" id="semester2">
+        <h2>Semester 2 Projects</h2>
+        <div class="project" onclick="showDescription('semester2/project1.txt')">
+            <h3>Project 1</h3>
+            <p>Summary of Project 1</p>
+            <button >View Description</button>
+        </div>
+        <div class="project" onclick="showDescription('semester2/project2.txt')">
+            <h3>Project 2</h3>
+            <p>Summary of Project 2</p>
+            <button >View Description</button>
+        </div>
+    </div>
+    <div class="project">
+    <h3>Project Summary</h3>
+    <div id="description"></div>
+</div>
+    <script src="script.js"></script>
+</body>
+</html>
