@@ -1,0 +1,60 @@
+body {
+    font-family: Arial, sans-serif;
+    background-image: url("background1.jpg"); /* Apply background image directly here */
+    background-size: cover; /* Optional: ensures the background covers the entire body */
+    background-position: center; /* Optional: centers the background image */
+    background-repeat: no-repeat; /* Optional: prevents the background from repeating */
+}
+
+h1, h2 ,h3{
+    color: #333;
+    text-align: center; /* Center align headings */
+}
+
+.semester {
+    margin: 20px 0;
+}
+
+.project {
+    border: 1px solid transparent; 
+    padding: 10px;
+    margin: 10px 0;
+    transition: transform 0.3s;
+    border-top: 2px solid#333;
+    border-left: 2px solid#333;
+    border-right: 2px solid#333;
+    border-bottom: 2px solid#333;
+    width: 30%;
+    margin-left: 35%;
+    text-align: center;
+    box-sizing: border-box;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.project:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #ce5959;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: 1s ease;
+    border-left: 2px solid #ccc;
+    border-right: 2px solid #ccc;
+    border-top: 2px solid #ccc;
+    border-bottom: 2px solid #ccc; 
+}
+
+button:hover {
+    transition: 1s ease;
+    background: transparent;
+    border-left: 2px solid black;
+    border-right: 2px solid black;
+    border-top: 2px solid black;
+    border-bottom: 2px solid black; 
+    color: white;
+}
