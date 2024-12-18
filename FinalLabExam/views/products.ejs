@@ -3,6 +3,7 @@
 <head>
   <title>Items</title>
   <style>
+    /* Existing styles */
     body {
       font-family: Arial, sans-serif;
       margin: 0;
@@ -23,11 +24,6 @@
       color: #333;
       margin-bottom: 20px;
     }
-    .add-item {
-      text-align: right;
-      margin-bottom: 20px;
-    }
-    
     .items-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -40,7 +36,6 @@
       padding: 15px;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
       text-align: center;
-      
     }
     .item-card img {
       width: 100%;
@@ -62,12 +57,28 @@
       font-weight: bold;
       margin-bottom: 10px;
     }
-    .actions, .details-btn {
+    .actions {
+      margin-top: 10px;
       display: flex;
       justify-content: space-between;
-      align-items: center;
+    }
+    .actions form {
+      display: inline;
+    }
+    .actions button {
+      background-color: #28a745;
+      color: #ffffff;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .actions button:hover {
+      background-color: #218838;
+    }
+    .details-btn {
       margin-top: 10px;
-      gap: 10px;
     }
     .details-btn button {
       background-color: #17a2b8;
@@ -80,25 +91,6 @@
     }
     .details-btn button:hover {
       background-color: #138496;
-    }
-    .actions a {
-      text-decoration: none;
-      font-size: 0.9em;
-    }
-    .actions form {
-      display: inline;
-    }
-    .actions button {
-      background-color: #dc3545;
-      color: #ffffff;
-      border: none;
-      padding: 5px 10px;
-      border-radius: 3px;
-      cursor: pointer;
-      transition: background-color 0.3s;
-    }
-    .actions button:hover {
-      background-color: #c82333;
     }
     .item-details {
       display: none;
@@ -121,21 +113,27 @@
 <body>
   <div class="container">
     <h1>All Items</h1>
-    <div class="add-item">
-      <a href="/products"></a>
-    </div>
     <div class="items-grid">
       <% items.forEach((item, index) => { %>
         <div class="item-card">
           <img src="<%= item.image %>" alt="<%= item.name %> Image">
           <h3><%= item.name %></h3>
-          <p class="price"><%= item.price %></p>
+          <p class="price">Rs. <%= item.price %></p>
           <p>Quantity: <strong><%= item.quantity %></strong></p>
           <div class="details-btn">
             <button onclick="toggleDetails('details-<%= index %>')">View Details</button>
           </div>
           <div id="details-<%= index %>" class="item-details">
             <p><%= item.description %></p>
+          </div>
+          <div class="actions">
+            <form action="/cart/add" method="POST">
+              <input type="hidden" name="id" value="<%= item._id %>">
+              <input type="hidden" name="name" value="<%= item.name %>">
+              <input type="hidden" name="price" value="<%= item.price %>">
+              <input type="hidden" name="quantity" value="1">
+              <button type="submit">Add to Cart</button>
+            </form>
           </div>
         </div>
       <% }) %>
