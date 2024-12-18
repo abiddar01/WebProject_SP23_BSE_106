@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Item = require("../models/Item");
+const Order = require("../models/Order");
 const bcrypt = require('bcrypt');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
@@ -31,6 +32,92 @@ function isAuthenticated(req, res, next) {
 router.get('/',(req,res)=>{
   res.render('user');
 })
+
+// SHOPPING CART AND CHECKOUT ROUTES
+// Route: Show Shopping Cart
+router.get('/cart', (req, res) => {
+  const cartItems = req.session.cart || []; // Retrieve cart from session
+  const totalAmount = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
+  res.render('cart', { cartItems, totalAmount });
+});
+
+// Route: Add item to Cart
+router.post('/cart/add', (req, res) => {
+  const { id, name, price, quantity } = req.body;
+  const cart = req.session.cart || [];
+  
+  const existingItem = cart.find(item => item.id === id);
+  if (existingItem) {
+    existingItem.quantity += quantity;
+  } else {
+    cart.push({ id, name, price, quantity });
+  }
+  req.session.cart = cart;
+  res.redirect('/cart');
+});
+
+// Route: Checkout
+router.post('/cart/checkout', async (req, res) => {
+  const { name, street, city, postalCode } = req.body;
+
+  if (!name || !street || !city || !postalCode) {
+    return res.status(400).send('All fields are required.');
+  }
+
+  const cartItems = req.session.cart || [];
+
+  // Sanitize and process the cart items
+  const sanitizedItems = cartItems.map((item) => {
+    const numericPrice = parseFloat(item.price.replace(/[^0-9.-]+/g, '')); // Remove non-numeric characters
+    return {
+      ...item,
+      price: numericPrice, // Ensure price is numeric
+      total: numericPrice * item.quantity, // Add a total field for each item
+    };
+  });
+
+  // Calculate the total amount
+  const totalAmount = sanitizedItems.reduce((sum, item) => sum + item.total, 0);
+
+  if (sanitizedItems.length === 0 || isNaN(totalAmount)) {
+    return res.status(400).send('Invalid cart items or total amount.');
+  }
+
+  const newOrder = new Order({
+    orderID: `ORD-${Date.now()}`,
+    customerInfo: { name, street, city, postalCode },
+    items: sanitizedItems,
+    totalAmount,
+  });
+
+  try {
+    await newOrder.save();
+    req.session.cart = []; // Clear the cart after checkout
+    res.redirect('/cart/success');
+  } catch (error) {
+    console.error('Error placing order:', error);
+    res.status(500).send('Failed to place order.');
+  }
+});
+
+
+// Route: Success Page
+router.get('/cart/success', (req, res) => {
+  res.render('success'); // Render a simple success message
+});
+
+// ADMIN PANEL ORDER MANAGEMENT ROUTES
+// Route: Fetch All Orders
+router.get('/dashboard/orders', isAuthenticated, async (req, res) => {
+  try {
+    const orders = await Order.find().sort({ orderDate: -1 }); // Fetch and sort orders
+    res.render('orders', { orders });
+  } catch (error) {
+    console.error('Error fetching orders:', error);
+    res.status(500).send('Internal Server Error');
+  }
+});
+
 
 // READ: Display all items
 router.get("/products", async (req, res) => {
