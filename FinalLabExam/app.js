@@ -1,8 +1,4 @@
 const express = require("express");
-const mongoose = require("mongoose");
-const bcrypt = require('bcrypt');
-const cookieParser = require('cookie-parser');
-const session = require('express-session');
 const bodyParser = require('body-parser');
 const methodOverride = require("method-override");
 const adminRoutes = require("./routes/admin");
@@ -18,7 +14,7 @@ app.use(bodyParser.json());
 app.set("view engine", "ejs");
 app.use(express.static("public"));
 app.use(methodOverride("_method"));
-app.use('/public', express.static('uploads')); // For static assets like images
+app.use('/public', express.static('uploads'));
 
 // Routes
 app.use(adminRoutes);

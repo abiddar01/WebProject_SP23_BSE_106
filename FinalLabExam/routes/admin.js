@@ -9,18 +9,18 @@ const session = require('express-session');
 router.use(cookieParser());
 router.use(
   session({
-    secret: 'mySecretKey', // Replace with a strong secret key
+    secret: 'mySecretKey', 
     resave: false,
     saveUninitialized: true,
     cookie: { secure: false, httpOnly: true },
   })
 );
 
-// Hardcoded Admin Credentials (username & hashed password)
+//User Password
 const adminUsername = 'admin';
 const adminPasswordHash = bcrypt.hashSync('admin123', 10); // Hash the password 'admin123'
 
-// Middleware to check if the user is authenticated
+// Middleware 
 function isAuthenticated(req, res, next) {
   if (req.session.isAdmin) {
     next();
@@ -77,7 +77,7 @@ router.post('/cart/checkout', async (req, res) => {
   });
 
   // Calculate the total amount
-  const totalAmount = sanitizedItems.reduce((sum, item) => sum + item.total, 0);
+  const totalAmount = item.total;
 
   if (sanitizedItems.length === 0 || isNaN(totalAmount)) {
     return res.status(400).send('Invalid cart items or total amount.');
